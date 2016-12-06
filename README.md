@@ -53,16 +53,19 @@ is valid, `WebCrawler` is initialized.
 Instructions
 ----------------
 Simply run the python file like so:
+
 `python3 WebCrawler.py -u "<URL (STRING)>"`
 
 This will use <VALID URL> as the seed URL and traverse the first 100 links the
 crawler finds.
 
 If you want to have the crawler traverse more or less than a 100 links, run:
+
 `python3 WebCrawler.py -u "<URL (STRING)>" -l <LIMIT (INTEGER)>`
 
 If you want to `WebCrawler` to save visited pages to a file other than
 "visited.txt", run:
+
 `python3 WebCrawler.py -u "<URL (STRING)>" -o <OUT_FILE (STRING)>`
 
 If you wish to terminate the graph traversal prematurely, on Linux you can
