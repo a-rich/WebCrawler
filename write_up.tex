@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{graphicx}
+\graphicspath{ {./} }
+\usepackage{scrextend}
+\begin{document}
+
+\noindent Alex Richards\\
+CS 146\\
+Section \#8\\
+Homework \#11 (BONUS ASSIGNMENT)\\
+
+\section{Design}
+The crawler, itself, is really simple; it takes in (as a minimum) a seed URL,
+parses that webpage for more links, appends them to the crawling queue and
+dequeues from that queue (parsing each link for more links) until either the
+queue is empty or a defined limit of page visits has been reached. Once that's
+been completed, all the visited links are written to an output file.
+Additionally, the user may define a limit and/or output file other than the
+default.\\
+
+\section{Sample Input/Output}
+When running WebCrawler with the following input:\\
+\mbox{\hspace*{0.5cm}python3 WebCrawler.py -u "https://en.wikipedia.org/wiki/Web\_crawler" -l 20}\\
+
+\noindent the default output file ("visited.txt") has the following lines written to it:\\
+\begin{addmargin}[1em]{}
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Talk:Web\_crawler#Proposal\_to\_merge\_Knowbot...\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Web\_search\_engine\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/WebCrawler\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Wikipedia:Merging\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Web\_indexing\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Index\_(search\_engine)\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/File:WebCrawlerArchitecture.svg\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Software\_agent\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Web\_scraping\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Arac\_(video\_game)\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Web\_content\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/World\_Wide\_Web\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Website\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Offline\_reader\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Hyperlink\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Robots.txt\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/User\_(computing)\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/HTML\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Internet\_bot\\
+https://en.wikipedia.org/wiki/web\_crawler/wiki/Knowbot\\
+\end{addmargin}
+
+\section{Challenges \& Potential Improvements}
+When testing WebCrawler, BeautifulSoup was able to successfully retrieve the
+anchor tags from most of the test seed URLs. However, I found that anchor tags
+on Wikipedia were not so easily captured. After a bit of searching, I found a
+stackoverflow post in which a user suggested using regular expressions to match
+the characteristic form of Wikipedia's internal links. Unfortunately, I'm
+unable to find that post again to cite it, but in the process of searching for
+it I found a simpler solution (cited below)...just adding `href=True` as an
+additional parameter to BeautifulSoup's `findAll` function.\\
+
+\section{Resources Used}
+David's solution from:\\
+https://stackoverflow.com/questions/499345/regular-expression-to-extract-url-from-an-html-link\\
+
+\end{document}
